@@ -9,7 +9,9 @@ potential = ul.laplace(potential)
 
 edge= np.linspace(0, 1, 100)
 xv,yv= np.meshgrid(edge,edge)
-plt.contour(xv,yv,potential,400)
+
+CS=plt.contour(xv,yv,potential,40)
+plt.clabel(CS)
 plt.xlabel("X")
 plt.ylabel("Y")
 plt.show()
