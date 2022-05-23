@@ -423,33 +423,4 @@ def qiw_shoot(E_interval, nodes,Equation):
 
 
 
-def Energy_R(E_0, E_t, Nodes, psi0, x, V,Equation):
-    M = E_t
-    N = E_0
-    psi = [1]
 
-    while (abs(N-M) > 1e-12 or abs(psi[-1]) > 1e-3):
-
-        E_i = (M+N)/2.0
-        psi = rk4(Equation, psi0, x, V, E_i)[:, 0]
-        Zerosindex=  np.where(np.diff(np.signbit(psi)))[0]
-        allowed = len(Zerosindex)-1
-        if allowed > Nodes+1:
-            M = E_i
-            continue
-        if allowed < Nodes-1:
-            N = E_i
-            continue
-        if (allowed % 2 == 0):
-            if((psi[len(psi)-1] <= 0.0)):
-                M = E_i
-            else:
-                N = E_i
-        elif allowed > 0:
-            if((psi[len(psi)-1] <= 0.0)):
-                N = E_i
-            else:
-                M = E_i
-        elif allowed < 0:
-            N = E_i
-    return N, M
