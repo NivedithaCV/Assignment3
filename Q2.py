@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def Equation(y, r, V, E):
     psi, phi = y
-    df = [phi, (V-E)*psi]
+    df = [phi, (E)*psi]
     return np.array(df)
 
 
@@ -25,6 +25,5 @@ plt.ylabel(r'$\psi$')
 plt.show()
 
 #Output
- #Ground state energy: 9.86960456126392
-#1st excited state energy:   39.47842784472754
+
 #plot Q2.png
